@@ -1,84 +1,36 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-import DateTime from './components/DateTime.vue'
-</script>
-
 <template>
-  <header>
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
+  <div id="full-page-wrapper" :style="someFunction">
+    <header>
+    <nav>
+      <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/about">About</RouterLink>
+    </nav>
   </header>
 
   <RouterView />
+</div>
+
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+<script setup>
+import { ref, computed } from 'vue';
+import { RouterLink, RouterView } from 'vue-router'
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+const backgroundImageUrl = ref('https://www.bing.com//th?id=OHR.TigerIndia_EN-US1594590553_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp');
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
+// Function to change the background image URL
+const changeBackgroundImage = (newUrl) => {
+  backgroundImageUrl.value = newUrl;
+};
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
+// Computed property to get the background image URL
+const computedBackgroundImageUrl = computed(() => backgroundImageUrl.value);
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style>
+// Function to return the style object with the background image URL
+const someFunction = computed(() => {
+  return {
+    backgroundImage: `url('${computedBackgroundImageUrl.value}')`,
+    backgroundPosition: 'center',
+  };
+});
+</script>
