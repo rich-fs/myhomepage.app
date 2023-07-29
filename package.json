@@ -1,0 +1,29 @@
+{
+  "name": "myhomepage.app",
+  "version": "1.0.0",
+  "description": "A clean and elegant homepage",
+  "main": "index.js",
+  "homepage": "https://myhomepage.app",
+  "scripts": {
+    "start": "node server.js",
+    "nodemon": "nodemon server.js",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rich-fs/myhomepage.app.git"
+  },
+  "author": "Rich Williamson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rich-fs/myhomepage.app/issues"
+  },
+  "dependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.45.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.28.0"
+  }
+}
