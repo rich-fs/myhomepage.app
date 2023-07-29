@@ -8,8 +8,6 @@ import DateTime from '../components/DateTime.vue'
   </div>
 </template>
 
-
-
 <style>
 @media (min-width: 1024px) {
   .home {
