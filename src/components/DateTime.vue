@@ -1,6 +1,8 @@
 <template>
-  <h1>{{ currentTime }}</h1>
-  <h2>{{ currentDate }}</h2>
+  <div class="text-center">
+    <h1 id="current-time" class="bordered-text">{{ currentTime }}</h1>
+    <h2 id="current-date" class="bordered-text">{{ currentDate }}</h2>
+  </div>
 </template>
 
 <script>
@@ -59,3 +61,14 @@ export default {
   },
 };
 </script>
+
+<style>
+  #current-time {
+    font-size: 20vh;
+    color: #fff;
+  }
+  #current-date {
+    font-size: 10vh;
+    color: #fff;
+  }
+</style>
