@@ -34,10 +34,10 @@ const computedBackgroundImageUrl = computed(() => backgroundImageUrl.value);
 // Function to fetch data and update the background image URL
 const fetchDataAndUpdateBackground = async () => {
   try {
-    const response = await axios.post('https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US');
+    const response = await axios.get('http://localhost:8080/bing-wallpaper');
 
     // Extract the image URL from the response data
-    const imageUrl = `https://www.bing.com${response.data.images[0].url}`;
+    const imageUrl = `https://www.bing.com${response.data.url}`;
     
     // Update the backgroundImageUrl with the image URL
     backgroundImageUrl.value = imageUrl;
