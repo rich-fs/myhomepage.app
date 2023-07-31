@@ -1,13 +1,20 @@
 <template>
   <div class="quick-links">
-    <span class="badge rounded-pill fs-6 border border-white text-white bg-white-transparent">
+    <span class="badge rounded-4 fs-6 border border-white text-white bg-white-transparent" @click="toggleModal" role="button">
       <i class="bi bi-box-arrow-in-right"></i>
       Login
     </span>
-    <nav>
+
+    <nav class="d-none">
       <RouterLink to="/" :class="'text-white'">Home</RouterLink>&nbsp;
       <RouterLink to="/about" :class="'text-white'">About</RouterLink>
     </nav>
+
+    <div v-if="showModal" class="login-modal rounded-4 border border-white bg-white-transparent">
+      <div class="modal-content text-white">
+        <p>This is a simple modal that appears below the span.</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -15,20 +22,36 @@
 export default {
   data() {
     return {
+      showModal: false,
     };
   },
-  mounted() {
-  },
   methods: {
+    toggleModal() {
+      this.showModal = !this.showModal;
+    },
   },
 };
 </script>
 
 <style>
-.quick-links {
-  position: fixed;
-  top: 0;
-  right: 0;
-  padding: 10px; 
-}
+  .quick-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 10px; 
+  }
+  
+  .login-modal {
+    position: absolute;
+    top: 100%; 
+    right: 0;
+    width: 200px; 
+    padding: 10px;
+    margin-right: 10px;
+  }
+
+  .modal-content {
+    
+  }
+
 </style>
