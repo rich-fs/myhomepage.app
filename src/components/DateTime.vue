@@ -9,8 +9,8 @@
 export default {
   data() {
     return {
-      currentTime: "",
-      currentDate: "",
+      currentTime: '',
+      currentDate: '',
     };
   },
   mounted() {
@@ -27,8 +27,8 @@ export default {
     updateDateTime() {
       const now = new Date();
       const hours = now.getHours();
-      const minutes = now.getMinutes();
-      const ampm = hours >= 12 ? "PM" : "AM";
+      const minutes = String(now.getMinutes()).padEnd(2, '0');
+      const ampm = hours >= 12 ? 'PM' : 'AM';
       const twelveHourFormat = hours % 12 || 12;
 
       // Update the currentTime data property with the current time
@@ -45,17 +45,17 @@ export default {
     },
     getDayNumberSuffix(day) {
       if (day >= 11 && day <= 13) {
-        return "th";
+        return 'th';
       }
       switch (day % 10) {
         case 1:
-          return "st";
+          return 'st';
         case 2:
-          return "nd";
+          return 'nd';
         case 3:
-          return "rd";
+          return 'rd';
         default:
-          return "th";
+          return 'th';
       }
     },
   },
