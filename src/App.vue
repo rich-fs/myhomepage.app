@@ -1,12 +1,6 @@
 <template>
   <div id="full-page-wrapper" :style="setBackgroundImage">
     <div class="content-wrapper">
-      <header>
-        <nav>
-          <RouterLink to="/">Home</RouterLink>
-          <RouterLink to="/about">About</RouterLink>
-        </nav>
-      </header>
       <QuickLinks></QuickLinks>
       <RouterView />
     </div>

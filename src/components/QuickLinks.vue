@@ -4,6 +4,10 @@
       <i class="bi bi-box-arrow-in-right"></i>
       Login
     </span>
+    <nav>
+      <RouterLink to="/" :class="'text-white'">Home</RouterLink>&nbsp;
+      <RouterLink to="/about" :class="'text-white'">About</RouterLink>
+    </nav>
   </div>
 </template>
 
