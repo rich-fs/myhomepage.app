@@ -7,6 +7,7 @@
           <RouterLink to="/about">About</RouterLink>
         </nav>
       </header>
+      <QuickLinks></QuickLinks>
       <RouterView />
     </div>
   </div>
@@ -15,10 +16,10 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { RouterLink, RouterView } from 'vue-router';
+import QuickLinks from './components/QuickLinks.vue'
 import axios from 'axios';
 
 const backgroundImageUrl = ref('');
-const backgroundImageKey = 'backgroundImageUrl';
 
 // Function to fetch data and update the background image URL
 const fetchDataAndUpdateBackground = async () => {
@@ -26,7 +27,7 @@ const fetchDataAndUpdateBackground = async () => {
     const currentDate = new Date().toISOString().slice(0, 10); // Format: "YYYY-MM-DD"
 
     // Check if the image URL is available in local storage
-    const cachedImageUrl = localStorage.getItem(backgroundImageKey);
+    const cachedImageUrl = localStorage.getItem('backgroundImageUrl');
     const cachedDate = localStorage.getItem('storedDate');
 
     if (cachedImageUrl && cachedDate === currentDate) {
@@ -43,7 +44,7 @@ const fetchDataAndUpdateBackground = async () => {
     backgroundImageUrl.value = imageUrl;
 
     // Store the data in local storage for the current day
-    localStorage.setItem(backgroundImageKey, imageUrl);
+    localStorage.setItem('backgroundImageUrl', imageUrl);
     localStorage.setItem('storedDate', currentDate);
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -59,7 +60,6 @@ onMounted(() => {
 const setBackgroundImage = computed(() => {
   return {
     backgroundImage: `url('${backgroundImageUrl.value}')`,
-    backgroundPosition: 'center',
   };
 });
 </script>
