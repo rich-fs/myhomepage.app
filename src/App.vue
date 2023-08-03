@@ -1,6 +1,7 @@
 <template>
   <div id="full-page-wrapper" :style="setBackgroundImage">
     <div class="content-wrapper">
+      <Login></Login>
       <QuickLinks></QuickLinks>
       <RouterView />
     </div>
@@ -10,6 +11,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { RouterLink, RouterView } from 'vue-router';
+import Login from './components/Login.vue'
 import QuickLinks from './components/QuickLinks.vue'
 import axios from 'axios';
 
