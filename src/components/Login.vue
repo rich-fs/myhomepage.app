@@ -1,7 +1,7 @@
 <template>
   <div class="login-links">
     <span class="badge rounded-4 border border-white text-white bg-white-transparent" @click="toggleModal" role="button">
-      <i class="bi bi-box-arrow-in-right"></i>
+      <i class="bi bi-door-open"></i>
       Login
     </span>
 
