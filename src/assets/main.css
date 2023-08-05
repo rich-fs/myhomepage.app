@@ -1,12 +1,40 @@
-@import './base.css';
+@import './helpers.css';
 
-.bordered-text {
-  -webkit-text-stroke: 2px black;
+body {
+  line-height: 1.6;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 15px;
 }
 
-.bg-white-transparent {
-  background-color: rgba(255, 255, 255, 0.5);
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
+
+#app {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#full-page-wrapper {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
+input:focus {
+  outline-width: 0;
+  caret-color: #fff;
+}
+
 
 @media (min-width: 1024px) {
 
