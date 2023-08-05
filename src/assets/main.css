@@ -30,9 +30,12 @@ html, body {
   align-items: center;  
 }
 
+.form-control:focus,
 input:focus {
   outline-width: 0;
   caret-color: #fff;
+  box-shadow: none;
+  border: 0
 }
 
 

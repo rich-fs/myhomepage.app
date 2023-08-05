@@ -1,6 +1,6 @@
 <template>
   <div class="login-links">
-    <span class="badge rounded-4 border border-white text-white bg-white-transparent" @click="toggleModal" role="button">
+    <span v-if="!isLoggedIn" class="badge rounded-4 border border-white text-white bg-white-transparent" @click="toggleModal" role="button">
       <i class="bi bi-door-open"></i>
       Login
     </span>
@@ -12,18 +12,17 @@
 
     <div v-if="showModal" class="login-modal rounded-4 border border-white bg-white-transparent">
       <div class="modal-content text-white">
-        <form>
+        <form @submit.prevent="login">
           <div class="mb-1">
             <label for="username" class="form-label mb-0">Username</label>
-            <input type="email" class="form-control form-control-sm" id="username">
+            <input v-model="username" type="text" class="form-control form-control-sm" id="username">
           </div>
           <div class="mb-1">
             <label for="password" class="form-label mb-0">Password</label>
-            <input type="password" class="form-control form-control-sm" id="password">
+            <input v-model="password" type="password" class="form-control form-control-sm" id="password">
           </div>
-          <div class="mb-1 form-check">
-            <input type="checkbox" class="form-check-input" id="remember">
-            <label class="form-check-label" for="remember">Remember Me</label>
+          <div class="mb-1">
+            <span v-if="showError" class="text-secondary">{{errorMessage}}</span>
           </div>
           <button type="submit" class="btn btn-secondary btn-sm">Submit</button>
         </form>
@@ -33,16 +32,62 @@
 </template>
 
 <script>
+import axios from 'axios';
+import jwt_decode from 'jwt-decode';
 export default {
   data() {
     return {
+      loggedIn: false,
       showModal: false,
+      showError: false,
+      errorMessage: '',
+      username: '',
+      password: '',
     };
+  },
+  computed: {
+    isLoggedIn() {
+      return this.loggedIn;
+    },
   },
   methods: {
     toggleModal() {
       this.showModal = !this.showModal;
     },
+    async login() {
+      const credentials = {
+        username: this.username,
+        password: this.password,
+      };
+
+      try {
+        const response = await axios.post('http://localhost:8080/auth/login', credentials, {
+          validateStatus: function (status) {
+            // Resolve the promise for any status code below 500
+            return status >= 200 && status < 500;
+          },
+        });
+
+        if (response.status === 200) {
+          const token = response.data.token;
+          localStorage.setItem('token', token);
+          this.toggleModal();
+          this.loggedIn = true;
+        } else {
+          this.showError = true;
+          this.errorMessage = 'Login failed: ' + response.data.message;
+        }
+      } catch (error) {
+        this.showError = true;
+        this.errorMessage = 'Login failed: Network error';
+      }
+    },
+  },
+  mounted() {
+    const token = localStorage.getItem('token');
+    const decodedToken = jwt_decode(token);
+          console.log(decodedToken);
+    this.loggedIn = !!token;
   },
 };
 </script>
@@ -62,9 +107,5 @@ export default {
     width: 200px; 
     padding: 10px;
     margin-right: 10px;
-  }
-
-  .modal-content {
-    
   }
 </style>
