@@ -1,8 +1,12 @@
 <template>
   <div class="login-links">
-    <span v-if="!isLoggedIn" class="badge rounded-4 border border-white text-white bg-white-transparent" @click="toggleModal" role="button">
+    <span v-if="!isLoggedIn" class="badge rounded-4 border border-white bg-white-transparent text-dark" @click="toggleModal" role="button">
       <i class="bi bi-door-open"></i>
       Login
+    </span>
+    <span v-else class="badge rounded-4 border border-white bg-white-transparent text-dark" @click="logout" role="button">
+      <i class="bi bi-door-closed"></i>
+      Logout
     </span>
 
     <nav class="d-none">
@@ -11,7 +15,7 @@
     </nav>
 
     <div v-if="showModal" class="login-modal rounded-4 border border-white bg-white-transparent">
-      <div class="modal-content text-white">
+      <div class="modal-content">
         <form @submit.prevent="login">
           <div class="mb-1">
             <label for="username" class="form-label mb-0">Username</label>
@@ -22,7 +26,7 @@
             <input v-model="password" type="password" class="form-control form-control-sm" id="password">
           </div>
           <div class="mb-1">
-            <span v-if="showError" class="text-secondary">{{errorMessage}}</span>
+            <span v-if="showError" class="text-drk">{{errorMessage}}</span>
           </div>
           <button type="submit" class="btn btn-secondary btn-sm">Submit</button>
         </form>
@@ -53,6 +57,18 @@ export default {
   methods: {
     toggleModal() {
       this.showModal = !this.showModal;
+    },
+    logout() {
+      localStorage.removeItem('token');
+      this.reset();
+    },
+    reset() {
+      this.loggedIn = false;
+      this.showModal = false;
+      this.showError = false;
+      this.errorMessage = '';
+      this.username = '';
+      this.password = '';
     },
     async login() {
       const credentials = {
@@ -85,8 +101,8 @@ export default {
   },
   mounted() {
     const token = localStorage.getItem('token');
-    const decodedToken = jwt_decode(token);
-          console.log(decodedToken);
+    // const decodedToken = jwt_decode(token);
+    //       console.log(decodedToken);
     this.loggedIn = !!token;
   },
 };
