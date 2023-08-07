@@ -29,5 +29,7 @@ export default {
 </script>
 
 <style>
-
+input[name="search"] {
+  margin-left: 0!important;
+}
 </style>
