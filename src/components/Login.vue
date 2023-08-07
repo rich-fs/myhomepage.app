@@ -18,8 +18,8 @@
       <div class="modal-content">
         <form @submit.prevent="login">
           <div class="mb-1">
-            <label for="username" class="form-label mb-0">Username</label>
-            <input v-model="username" type="text" class="form-control form-control-sm" id="username">
+            <label for="email" class="form-label mb-0">Email</label>
+            <input v-model="email" type="email" class="form-control form-control-sm" id="email">
           </div>
           <div class="mb-1">
             <label for="password" class="form-label mb-0">Password</label>
@@ -45,7 +45,7 @@ export default {
       showModal: false,
       showError: false,
       errorMessage: '',
-      username: '',
+      email: '',
       password: '',
     };
   },
@@ -67,17 +67,17 @@ export default {
       this.showModal = false;
       this.showError = false;
       this.errorMessage = '';
-      this.username = '';
+      this.email = '';
       this.password = '';
     },
     async login() {
       const credentials = {
-        username: this.username,
+        email: this.email,
         password: this.password,
       };
 
       try {
-        const response = await axios.post('http://localhost:8080/auth/login', credentials, {
+        const response = await axios.post('http://localhost:3030/auth/login', credentials, {
           validateStatus: function (status) {
             // Resolve the promise for any status code below 500
             return status >= 200 && status < 500;

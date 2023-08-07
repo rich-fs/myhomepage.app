@@ -33,7 +33,7 @@ const fetchDataAndUpdateBackground = async () => {
     }
 
     // Fetch data from the backend
-    const response = await axios.get('http://localhost:8080/bing-wallpaper');
+    const response = await axios.get('http://localhost:3030/bing-wallpaper');
     const imageUrl = `https://www.bing.com${response.data.url}`;
 
     // Update the backgroundImageUrl with the fetched image URL
