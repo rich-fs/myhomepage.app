@@ -1,16 +1,22 @@
-# vue-project
+# MyHomepage APP
 
-This template should help get you started developing with Vue 3 in Vite.
+MyHomepage APP is a small Vue JS frontend that creates a landing page for the internet. This landing page serves as your homepage and provides various functionalities, including displaying the current date and time, managing a to-do list, and offering access to a Google search.
 
-## Recommended IDE Setup
+## Features
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- Display the current date and time.
+- Create and manage a to-do list.
+- Access a Google search.
 
-## Customize configuration
+## Prerequisites
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Make sure you have the following tools and software installed:
 
-## Project Setup
+- Git
+- Node.js 18
+- npm 9
+
+## Getting Started
 
 ```sh
 npm install
@@ -33,3 +39,16 @@ npm run build
 ```sh
 npm run lint
 ```
+
+## Customize configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/).
+
+
+## Contributing
+
+Contributions are welcome! If you find any bugs or have suggestions for improvements, please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the GNU GPL3 License.
