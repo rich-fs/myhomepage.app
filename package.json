@@ -18,7 +18,7 @@
     "url": "git+https://github.com/rich-fs/myhomepage.app.git"
   },
   "author": "Rich Williamson",
-  "license": "ISC",
+  "license": "GNU GPL V3",
   "bugs": {
     "url": "https://github.com/rich-fs/myhomepage.app/issues"
   },
