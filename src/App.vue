@@ -3,6 +3,7 @@
     <div class="content-wrapper">
       <Login></Login>
       <QuickLinks></QuickLinks>
+      <TodoList v-if="loggedInStatus"></TodoList>
       <RouterView />
     </div>
   </div>
@@ -10,10 +11,13 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue';
-import { RouterLink, RouterView } from 'vue-router';
+import { RouterView } from 'vue-router';
+import axios from 'axios';
+
 import Login from './components/Login.vue'
 import QuickLinks from './components/QuickLinks.vue'
-import axios from 'axios';
+import TodoList from './components/TodoList.vue'
+import useAuthStore from './stores/auth';
 
 const backgroundImageUrl = ref('');
 
@@ -58,4 +62,9 @@ const setBackgroundImage = computed(() => {
     backgroundImage: `url('${backgroundImageUrl.value}')`,
   };
 });
+
+const loggedInStatus = computed(() => {
+  return useAuthStore().loggedIn;
+});
+console.log(loggedInStatus)
 </script>
