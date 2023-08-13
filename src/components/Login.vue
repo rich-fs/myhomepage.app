@@ -1,6 +1,6 @@
 <template>
   <div class="login-links">
-    <span v-if="!isLoggedIn" class="badge rounded-4 border border-white bg-white-transparent text-dark" @click="toggleModal" role="button">
+    <span v-if="!loggedInStatus" class="badge rounded-4 border border-white bg-white-transparent text-dark" @click="toggleModal" role="button">
       <i class="bi bi-door-open"></i>
       Login
     </span>
@@ -38,10 +38,11 @@
 <script>
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
+import useAuthStore from '../stores/auth';
+
 export default {
   data() {
     return {
-      loggedIn: false,
       showModal: false,
       showError: false,
       errorMessage: '',
@@ -50,8 +51,8 @@ export default {
     };
   },
   computed: {
-    isLoggedIn() {
-      return this.loggedIn;
+    loggedInStatus() {
+      return useAuthStore().loggedIn;
     },
   },
   methods: {
@@ -60,16 +61,39 @@ export default {
     },
     logout() {
       localStorage.removeItem('token');
+      useAuthStore().setLoggedIn(false);
       this.reset();
     },
     reset() {
-      this.loggedIn = false;
       this.showModal = false;
       this.showError = false;
       this.errorMessage = '';
       this.email = '';
       this.password = '';
     },
+    checkToken() {
+      const token = localStorage.getItem('token');
+      
+      if (token) {
+        try {
+          const decodedToken = jwt_decode(token); // Use jwt_decode to extract the payload
+          const expirationTimestamp = decodedToken.exp;
+
+          if (expirationTimestamp * 1000 < Date.now()) {
+            this.logout();
+            return false; // Token has expired
+          }
+        } catch (error) {
+          this.logout();
+          return false; // Token isn't valid
+        }
+
+        useAuthStore().setLoggedIn(true);
+        return true; // User login is valid.
+      }
+
+      return false; // Token not found
+    },    
     async login() {
       const credentials = {
         email: this.email,
@@ -79,7 +103,6 @@ export default {
       try {
         const response = await axios.post('http://localhost:3030/auth/login', credentials, {
           validateStatus: function (status) {
-            // Resolve the promise for any status code below 500
             return status >= 200 && status < 500;
           },
         });
@@ -88,7 +111,7 @@ export default {
           const token = response.data.token;
           localStorage.setItem('token', token);
           this.toggleModal();
-          this.loggedIn = true;
+          useAuthStore().setLoggedIn(true);
         } else {
           this.showError = true;
           this.errorMessage = 'Login failed: ' + response.data.message;
@@ -100,10 +123,7 @@ export default {
     },
   },
   mounted() {
-    const token = localStorage.getItem('token');
-    // const decodedToken = jwt_decode(token);
-    //       console.log(decodedToken);
-    this.loggedIn = !!token;
+    this.checkToken();
   },
 };
 </script>
