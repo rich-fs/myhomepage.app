@@ -37,7 +37,8 @@ const fetchDataAndUpdateBackground = async () => {
     }
 
     // Fetch data from the backend
-    const response = await axios.get('http://localhost:3030/bing-wallpaper');
+    const apiUrl = import.meta.env.VITE_API_URL;
+    const response = await axios.get(apiUrl + '/bing-wallpaper');
     const imageUrl = `https://www.bing.com${response.data.url}`;
 
     // Update the backgroundImageUrl with the fetched image URL
@@ -66,5 +67,4 @@ const setBackgroundImage = computed(() => {
 const loggedInStatus = computed(() => {
   return useAuthStore().loggedIn;
 });
-console.log(loggedInStatus)
 </script>
