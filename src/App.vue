@@ -21,6 +21,7 @@ import useAuthStore from './stores/auth';
 
 const backgroundImageUrl = ref('');
 
+console.log(import.meta.env);
 // Function to fetch data and update the background image URL
 const fetchDataAndUpdateBackground = async () => {
   try {
