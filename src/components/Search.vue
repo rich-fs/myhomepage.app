@@ -2,9 +2,9 @@
   <div class="text-center">
     <div class="input-group justify-content-center">
       <span class="input-group-text bg-white-transparent rounded-pill rounded-pill-left text-dark border border-white border-1 border-end-0">
-        <i class="bi bi-google"></i>
+        <i class="bi bi-search ms-2"></i>
       </span>
-      <input type="text" name="search" v-model="term" @keyup.enter="search" class="bg-white-transparent rounded-pill rounded-pill-right py-2 px-3 border border-white border-1 border-start-0 text-dark w-75 fs-5"/>
+      <input type="text" name="search" v-model="term" @keyup.enter="search" class="bg-white-transparent rounded-pill rounded-pill-right py-2 pe-3 border border-white border-1 border-start-0 text-dark w-75 fs-5"/>
     </div>
   </div>
 </template>

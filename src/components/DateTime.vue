@@ -64,11 +64,11 @@ export default {
 
 <style>
   #current-time {
-    font-size: 20vh;
+    font-size: 16vh;
     color: #fff;
   }
   #current-date {
-    font-size: 10vh;
+    font-size: 8vh;
     color: #fff;
   }
 </style>
