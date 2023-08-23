@@ -1,7 +1,17 @@
 <template>
   <div class="text-center">
-    <h1 id="current-time" class="bordered-text">{{ currentTime }}</h1>
-    <h2 id="current-date" class="bordered-text">{{ currentDate }}</h2>
+    <h1
+      id="current-time"
+      class="bordered-text"
+    >
+      {{ currentTime }}
+    </h1>
+    <h2
+      id="current-date"
+      class="bordered-text"
+    >
+      {{ currentDate }}
+    </h2>
   </div>
 </template>
 
@@ -20,7 +30,7 @@ export default {
       this.updateDateTime();
     }, 1000);
   },
-  beforeDestroy() {
+  beforeUnmount() {
     clearInterval(this.timer);
   },
   methods: {
