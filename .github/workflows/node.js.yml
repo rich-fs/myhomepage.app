@@ -19,4 +19,4 @@ jobs:
       with:
         node-version: 18.x
         cache: 'npm'
-    - run: npm lint
+    - run: npm run lint
