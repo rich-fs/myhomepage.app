@@ -4,7 +4,10 @@ module.exports = {
     commonjs: true,
     es2021: true,
   },
-  extends: 'airbnb-base',
+  extends: [
+    'airbnb-base',
+    'plugin:vue/vue3-recommended',
+  ],
   overrides: [
     {
       env: {
@@ -22,5 +25,6 @@ module.exports = {
     ecmaVersion: 'latest',
   },
   rules: {
+    'vue/multi-word-component-names': 'off',
   },
 };
