@@ -102,6 +102,7 @@ export default {
 
       try {
         const apiUrl = import.meta.env.VITE_API_URL;
+        console.log(apiUrl);
         const response = await axios.post(apiUrl + '/auth/login', credentials, {
           validateStatus: function (status) {
             return status >= 200 && status < 500;
