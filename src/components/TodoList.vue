@@ -13,11 +13,11 @@
       v-if="showModal"
       class="todo-modal rounded-4 border border-white bg-white-transparent"
     >
-      <ul class="list-group">
+      <ul class="list-group mb-2">
         <li
           v-for="item in items"
           :key="item.id"
-          class="list-group-item"
+          class="list-group-item pb-0"
         >
           <input
             :id="slugify(item.title)"
@@ -31,13 +31,22 @@
           >{{ item.title }}</label>
         </li>
       </ul>
-      <input v-model="newItemText">
-      <button
-        class="btn btn-secondary btn-sm"
-        @click="addItem"
-      >
-        Add Item
-      </button>
+      <div class="row g-3">
+        <div class="col-auto">
+          <input
+            v-model="newItemText"
+            class="form-control form-control-sm"
+          >
+        </div>
+        <div class="col-auto p-0">
+          <button
+            class="btn btn-secondary btn-sm"
+            @click="addItem"
+          >
+            <i class="bi bi-plus" />
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -121,8 +130,13 @@ export default {
     position: absolute;
     top: 100%;
     left: 0;
-    width: 400px;
+    min-width: 20vw;
     padding: 10px;
     margin-left: 10px;
+  }
+
+  .list-group-item {
+    border: none;
+    background-color: inherit;
   }
 </style>
