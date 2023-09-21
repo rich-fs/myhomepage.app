@@ -1,35 +1,35 @@
 <template>
   <div class="quick-links">
-    <span class="badge rounded-4 border border-white text-dark bg-white-transparent me-1">
+    <span class="badge rounded-4 border border-primary text-secondary bg-dark me-1">
       <i class="bi bi-github me-1" />
       <a
         href="https://github.com/rich-fs/myhomepage.app"
         title="MyHomepage App"
         target="_blank"
-        class="text-dark text-decoration-none"
+        class="text-secondary text-decoration-none"
       >App</a>
     </span>
 
-    <span class="badge rounded-4 border border-white text-dark bg-white-transparent">
+    <span class="badge rounded-4 border border-primary text-secondary bg-dark">
       <i class="bi bi-github me-1" />
       <a
         href="https://github.com/rich-fs/myhomepage.api"
         title="MyHomepage App"
         target="_blank"
-        class="text-dark text-decoration-none"
+        class="text-secondary text-decoration-none"
       >API</a>
     </span>
 
     <nav class="d-none">
       <RouterLink
         to="/"
-        :class="'text-dark'"
+        :class="'text-secondary'"
       >
         Home
       </RouterLink>&nbsp;
       <RouterLink
         to="/about"
-        :class="'text-dark'"
+        :class="'text-secondary'"
       >
         About
       </RouterLink>

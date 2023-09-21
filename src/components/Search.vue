@@ -3,10 +3,10 @@
     <div class="input-group justify-content-center">
       <span
         class="input-group-text
-          bg-white-transparent
+          bg-dark
           rounded-pill rounded-pill-left
-          text-dark
-          border border-white border-1 border-end-0"
+          text-primary
+          border border-primary border-1 border-end-0"
       >
         <i class="bi bi-search ms-2" />
       </span>
@@ -14,11 +14,11 @@
         v-model="term"
         type="text"
         name="search"
-        class="bg-white-transparent
+        class="bg-dark
           rounded-pill rounded-pill-right
           py-2 pe-3
-          border border-white border-1 border-start-0
-          text-dark w-75 fs-5"
+          border border-primary border-1 border-start-0
+          text-secondary w-75 fs-5"
         @keyup.enter="search"
       >
     </div>

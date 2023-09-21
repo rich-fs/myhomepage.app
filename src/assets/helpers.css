@@ -1,9 +1,5 @@
 .bordered-text {
-  -webkit-text-stroke: 2px #212529;
-}
-
-.bg-white-transparent {
-  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-text-stroke: 1px #24273A;
 }
 
 .rounded-pill-right {

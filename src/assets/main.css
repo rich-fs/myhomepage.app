@@ -1,4 +1,6 @@
+@import './custom.scss';
 @import './helpers.css';
+
 
 body {
   line-height: 1.6;
@@ -30,8 +32,7 @@ html, body {
   align-items: center;  
 }
 
-.form-control:focus,
-input:focus {
+.form-control:focus, input:focus {
   outline-width: 0;
   /* caret-color: #fff; */
   box-shadow: none;

@@ -1,7 +1,7 @@
 <template>
   <div class="todo-list">
     <span
-      class="badge rounded-4 border border-white text-dark bg-white-transparent me-1"
+      class="badge rounded-4 border border-primary text-secondary bg-dark me-1"
       role="button"
       @click="toggleModal"
     >
@@ -11,7 +11,7 @@
 
     <div
       v-if="showModal"
-      class="todo-modal rounded-4 border border-white bg-white-transparent"
+      class="todo-modal rounded-4 border border-primary bg-dark"
     >
       <ul class="list-group mb-2">
         <li

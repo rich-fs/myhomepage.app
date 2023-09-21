@@ -2,7 +2,7 @@
   <div class="login-links">
     <span
       v-if="!loggedInStatus"
-      class="badge rounded-4 border border-white bg-white-transparent text-dark"
+      class="badge rounded-4 border border-primary bg-dark text-secondary"
       role="button"
       @click="toggleModal"
     >
@@ -11,7 +11,7 @@
     </span>
     <span
       v-else
-      class="badge rounded-4 border border-white bg-white-transparent text-dark"
+      class="badge rounded-4 border border-primary bg-dark text-secondary"
       role="button"
       @click="logout"
     >
@@ -22,13 +22,13 @@
     <nav class="d-none">
       <RouterLink
         to="/"
-        :class="'text-white'"
+        :class="'text-secondary'"
       >
         Home
       </RouterLink>&nbsp;
       <RouterLink
         to="/about"
-        :class="'text-white'"
+        :class="'text-secondary'"
       >
         About
       </RouterLink>
@@ -36,7 +36,7 @@
 
     <div
       v-if="showModal"
-      class="login-modal rounded-4 border border-white bg-white-transparent"
+      class="login-modal rounded-4 border border-primary bg-dark text-secondary"
     >
       <div class="modal-content">
         <form @submit.prevent="login">
@@ -72,7 +72,7 @@
           </div>
           <button
             type="submit"
-            class="btn btn-secondary btn-sm"
+            class="btn btn-primary btn-sm"
           >
             Submit
           </button>

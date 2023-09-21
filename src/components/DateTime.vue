@@ -75,10 +75,10 @@ export default {
 <style>
   #current-time {
     font-size: 16vh;
-    color: #fff;
+    color: #eff1f5;
   }
   #current-date {
     font-size: 8vh;
-    color: #fff;
+    color: #eff1f5;
   }
 </style>
