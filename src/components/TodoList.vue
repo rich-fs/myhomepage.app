@@ -17,18 +17,10 @@
         <li
           v-for="item in items"
           :key="item.id"
-          class="list-group-item pb-0"
+          class="list-group-item d-flex justify-content-between align-items-center"
         >
-          <input
-            :id="slugify(item.title)"
-            class="form-check-input me-1"
-            type="checkbox"
-            value=""
-          >
-          <label
-            class="form-check-label"
-            :for="slugify(item.title)"
-          >{{ item.title }}</label>
+          {{ item.title }}
+          <i class="bi bi-check-square" />
         </li>
       </ul>
       <div class="row g-3">
@@ -138,5 +130,6 @@ export default {
   .list-group-item {
     border: none;
     background-color: inherit;
+    color: rgba(var(--bs-primary-rgb), var(--bs-border-opacity)) !important
   }
 </style>
