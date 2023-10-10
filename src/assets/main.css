@@ -36,7 +36,6 @@ html, body {
   outline-width: 0;
   /* caret-color: #fff; */
   box-shadow: none;
-  border: 0
 }
 
 @media (min-width: 1024px) {

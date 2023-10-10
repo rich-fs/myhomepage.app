@@ -13,7 +13,7 @@
       v-if="showModal"
       class="todo-modal rounded-4 border border-primary bg-dark"
     >
-      <ul class="list-group mb-2">
+      <ul class="list-group list-group-mine mb-2">
         <li
           v-for="item in items"
           :key="item.id"
@@ -23,7 +23,7 @@
           <i class="bi bi-check-square" />
         </li>
       </ul>
-      <div class="row g-3">
+      <div class="row g-3 mx-2">
         <div class="col-auto">
           <input
             v-model="newItemText"
@@ -31,12 +31,10 @@
           >
         </div>
         <div class="col-auto p-0">
-          <button
-            class="btn btn-secondary btn-sm"
+          <i
+            class="bi bi-plus-square-fill text-primary fs-5"
             @click="addItem"
-          >
-            <i class="bi bi-plus" />
-          </button>
+          />
         </div>
       </div>
     </div>
