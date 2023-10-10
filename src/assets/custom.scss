@@ -5,6 +5,11 @@ $secondary: #B8C0E0;
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 
+.list-group-item {
+    border: none;
+    background-color: inherit;
+    color: rgba(var(--bs-primary-rgb), var(--bs-border-opacity)) !important
+}
 
 .list-group-mine .list-group-item {
     color: rgba(var(--bs-light-rgb), var(--bs-border-opacity)) !important;
