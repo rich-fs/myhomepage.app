@@ -28,6 +28,7 @@
           <input
             v-model="newItemText"
             class="form-control form-control-sm"
+            @keydown.enter="addItem"
           >
         </div>
         <div class="col-auto p-0">
@@ -123,11 +124,5 @@ export default {
     min-width: 20vw;
     padding: 10px;
     margin-left: 10px;
-  }
-
-  .list-group-item {
-    border: none;
-    background-color: inherit;
-    color: rgba(var(--bs-primary-rgb), var(--bs-border-opacity)) !important
   }
 </style>
